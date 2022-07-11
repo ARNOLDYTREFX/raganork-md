@@ -24,11 +24,11 @@ Module({
     var mss = '';
     if (commits.total === 0) {
     mss = "*No pending updates!*";
-    var img = "https://i.imgur.com/ewoHjmm.jpeg"
+    var img = "https://i.imgur.com/POyujnj.jpeg"
     var buttons = [{
         urlButton: {
-            displayText: 'WIKI',
-            url: 'https://github.com/souravkl11/raganork-md/wiki'
+            displayText: 'ARNOLDYTREFX',
+            url: 'https://github.com/ARNOLDYTREFX/raganork-md'
         }
     }];
     } else {
@@ -39,16 +39,16 @@ Module({
             }
         );
         mss = changelog;
-       var img = "https://i.imgur.com/z31OAAK.jpeg"
+       var img = "https://i.imgur.com/POyujnj.jpeg"
        var buttons = [{
         urlButton: {
-            displayText: 'WIKI',
-            url: 'https://github.com/souravkl11/raganork-md/wiki'
+            displayText: 'ARNOLDYTREFX',
+            url: 'https://github.com/ARNOLDYTREFX/raganork-md'
         }
     },
     {
         quickReplyButton: {
-            displayText: 'START UPDATE',
+            displayText: 'അപ്ഡേറ്റ് ചെയ്യട്ടെ...?',
             id: 'upd '+message.myjid
         }
     }];
@@ -63,10 +63,10 @@ Module({
      await git.fetch();
     var commits = await git.log(['main' + '..origin/' + 'main']);
     if (commits.total === 0) {
-        return await message.client.sendMessage(message.jid, { text:"_Bot up to date_"})
+        return await message.client.sendMessage(message.jid, { text:"_ബോട്ട് പൂർണമായും പുതിയതാണ്_"})
 
     } else {
-        await message.sendReply("_Build started ⏫_")
+        await message.sendReply("_അപ്ഡേറ്റ് Start ചെയ്തു ഒന്ന് wait ചെയ്യണേ ⏫_")
 
             try {
                 var app = await heroku.get('/apps/' + Config.HEROKU.APP_NAME)
@@ -88,7 +88,7 @@ Module({
             try { await git.push('heroku', 'main'); } catch(e){ 
             if (e.message.includes("concurrent")) return await message.sendReply("Your account has reached in-parallel build limit! Please wait for the other app to finish its deploy ❗"); 
             }
-            await message.sendReply("_Finished build! Restarting.._")
+            await message.sendReply("_Update കഴിഞ്ഞു! Restart ചെയ്യുവാ.._")
          }
     }
     }));
@@ -96,10 +96,10 @@ Module({pattern: 'updt',use: 'owner', fromMe: true,dontAddCommandList: true, des
     await git.fetch();
     var commits = await git.log(['main' + '..origin/' + 'main']);
     if (commits.total === 0) {
-        return await message.client.sendMessage(message.jid, { text:"_Bot up to date_"})
+        return await message.client.sendMessage(message.jid, { text:"_ബോട്ട് പൂർണമായും പുതിയതാണ്_"})
 
     } else {
-        await message.client.sendMessage(message.jid, { text:"_Started update.._"})
+        await message.client.sendMessage(message.jid, { text:"_അപ്ഡേറ്റ് START ചെയ്തു.._"})
 
             try {
                 var app = await heroku.get('/apps/' + Config.HEROKU.APP_NAME)
@@ -120,7 +120,7 @@ Module({pattern: 'updt',use: 'owner', fromMe: true,dontAddCommandList: true, des
             } catch { console.log('heroku remote ekli'); }
             await git.push('heroku', 'main');
 
-            await message.client.sendMessage(message.jid, { text:"_Successfully updated_"})
-           await message.client.sendMessage(message.jid, { text:"_Restarting_"})
+            await message.client.sendMessage(message.jid, { text:"_അപ്ഡേറ്റ് വിജയകരമായി പൂർത്തിയായി_"})
+           await message.client.sendMessage(message.jid, { text:"_Restarting സന്തോഷം ആയില്ലേ 🤓_"})
             }
 }));
